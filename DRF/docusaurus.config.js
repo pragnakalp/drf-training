@@ -67,7 +67,7 @@ const config = {
         respectPrefersColorScheme: true,
       },
       navbar: {
-        title: 'drf training',
+        title: 'DRF training',
         logo: {
           alt: 'drf training Logo',
           src: 'img/pk-color-128.png',
