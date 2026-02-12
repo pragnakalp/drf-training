@@ -126,7 +126,7 @@ Each level follows this structure:
 ### For Those with Django Experience
 
 1. Review **[LEVEL_1_FOUNDATIONS.md](LEVEL_1_FOUNDATIONS.md)** - Focus on DRF-specific parts
-2. Start with **[LEVEL_2_INTERMEDIATE.md](LEVEL_2_INTERMEDIATE.md)** for authentication
+2. Start with **[LEVEL_2A_INTERMEDIATE.md](LEVEL_2A_INTERMEDIATE.md)** for authentication
 3. Use other levels as reference
 
 ## 🐛 Troubleshooting

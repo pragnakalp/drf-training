@@ -1994,7 +1994,7 @@ class ExceptionHandlerTest(APITestCase):
 
 ## Testing Authenticated APIs
 
-See [CURL_GUIDE.md](CURL_GUIDE.md) for detailed examples. Quick reference:
+See below for detailed examples. Quick reference:
 
 ```bash
 # Get token

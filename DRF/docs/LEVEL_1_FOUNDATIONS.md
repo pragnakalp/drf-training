@@ -961,7 +961,7 @@ class BookAdmin(admin.ModelAdmin):
 # Start server
 python manage.py runserver
 
-# Test with cURL (see CURL_GUIDE.md for details)
+# Test with cURL
 curl http://localhost:8000/api/books/
 
 # Or visit in browser
@@ -1157,7 +1157,7 @@ if not serializer.is_valid():
 
 ## Testing with cURL
 
-See [CURL_GUIDE.md](CURL_GUIDE.md) for detailed cURL examples. Here are quick examples:
+See below for detailed cURL examples. Here are quick examples:
 
 ```bash
 # GET - List all tasks
