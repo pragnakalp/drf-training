@@ -976,7 +976,72 @@ LOGGING =
 
 ### Exercise 2: External API Integration
 
-1. Integrate with a third-party API
+**Third-Party API Selected: Harry Potter API**
+
+For this task, we have chosen to integrate the **Harry Potter API** as the external third-party service.
+
+**API Base URL:** `https://hp-api.onrender.com`
+
+This API is publicly available, does not require authentication, and provides structured JSON responses suitable for demonstrating external API integration and scalable architecture practices in Django REST Framework.
+
+#### APIs to be Integrated
+
+Integrate the following three external endpoints:
+
+**1. Fetch All Characters**
+
+- **External API Endpoint:**
+  ```
+  GET https://hp-api.onrender.com/api/characters
+  ```
+
+- **Data to Extract from Response:**
+  - `name`
+  - `house`
+  - `actor`
+  - `species`
+  - `patronus`
+  - `dateOfBirth`
+  - `alive`
+  - `image`
+
+**2. Fetch Hogwarts Staff**
+
+- **External API Endpoint:**
+  ```
+  GET https://hp-api.onrender.com/api/characters/staff
+  ```
+
+- **Data to Extract from Response:**
+  - `name`
+  - `house`
+  - `actor`
+  - `patronus`
+  - `alive`
+  - `image`
+
+**3. Fetch Characters by House**
+
+- **External API Endpoint:**
+  ```
+  GET https://hp-api.onrender.com/api/characters/house/{house}
+  ```
+  
+- **Example:**
+  ```
+  GET https://hp-api.onrender.com/api/characters/house/gryffindor
+  ```
+
+- **Data to Extract from Response:**
+  - `name`
+  - `actor`
+  - `patronus`
+  - `alive`
+  - `image`
+
+#### Tasks
+
+1. Integrate with the Harry Potter API endpoints listed above
 2. Handle errors gracefully
 3. Add retry logic
 4. Cache external API responses
