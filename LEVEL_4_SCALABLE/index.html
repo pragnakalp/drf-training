@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.9.2">
 <title data-rh="true">Level 4: Scalable API Design - Caching, Versioning &amp; Advanced Features | drf training</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://pragnakalp.github.io/drf-training/LEVEL_4_SCALABLE"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Level 4: Scalable API Design - Caching, Versioning &amp; Advanced Features | drf training"><meta data-rh="true" name="description" content="Goal"><meta data-rh="true" property="og:description" content="Goal"><link data-rh="true" rel="icon" href="/drf-training/img/pk-color-128.png"><link data-rh="true" rel="canonical" href="https://pragnakalp.github.io/drf-training/LEVEL_4_SCALABLE"><link data-rh="true" rel="alternate" href="https://pragnakalp.github.io/drf-training/LEVEL_4_SCALABLE" hreflang="en"><link data-rh="true" rel="alternate" href="https://pragnakalp.github.io/drf-training/LEVEL_4_SCALABLE" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Level 4: Scalable API Design - Caching, Versioning & Advanced Features","item":"https://pragnakalp.github.io/drf-training/LEVEL_4_SCALABLE"}]}</script><link rel="stylesheet" href="/drf-training/assets/css/styles.dd77c8c2.css">
-<script src="/drf-training/assets/js/runtime~main.cc18cb8b.js" defer="defer"></script>
+<script src="/drf-training/assets/js/runtime~main.ba943b21.js" defer="defer"></script>
 <script src="/drf-training/assets/js/main.7ad94a7a.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -185,8 +185,74 @@
 <li class="">Write tests</li>
 </ol>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="exercise-2-external-api-integration">Exercise 2: External API Integration<a href="#exercise-2-external-api-integration" class="hash-link" aria-label="Direct link to Exercise 2: External API Integration" title="Direct link to Exercise 2: External API Integration" translate="no">​</a></h3>
+<p><strong>Third-Party API Selected: Harry Potter API</strong></p>
+<p>For this task, we have chosen to integrate the <strong>Harry Potter API</strong> as the external third-party service.</p>
+<p><strong>API Base URL:</strong> <code>https://hp-api.onrender.com</code></p>
+<p>This API is publicly available, does not require authentication, and provides structured JSON responses suitable for demonstrating external API integration and scalable architecture practices in Django REST Framework.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="apis-to-be-integrated">APIs to be Integrated<a href="#apis-to-be-integrated" class="hash-link" aria-label="Direct link to APIs to be Integrated" title="Direct link to APIs to be Integrated" translate="no">​</a></h4>
+<p>Integrate the following three external endpoints:</p>
+<p><strong>1. Fetch All Characters</strong></p>
+<ul>
+<li class="">
+<p><strong>External API Endpoint:</strong></p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">GET https://hp-api.onrender.com/api/characters</span><br></span></code></pre></div></div>
+</li>
+<li class="">
+<p><strong>Data to Extract from Response:</strong></p>
+<ul>
+<li class=""><code>name</code></li>
+<li class=""><code>house</code></li>
+<li class=""><code>actor</code></li>
+<li class=""><code>species</code></li>
+<li class=""><code>patronus</code></li>
+<li class=""><code>dateOfBirth</code></li>
+<li class=""><code>alive</code></li>
+<li class=""><code>image</code></li>
+</ul>
+</li>
+</ul>
+<p><strong>2. Fetch Hogwarts Staff</strong></p>
+<ul>
+<li class="">
+<p><strong>External API Endpoint:</strong></p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">GET https://hp-api.onrender.com/api/characters/staff</span><br></span></code></pre></div></div>
+</li>
+<li class="">
+<p><strong>Data to Extract from Response:</strong></p>
+<ul>
+<li class=""><code>name</code></li>
+<li class=""><code>house</code></li>
+<li class=""><code>actor</code></li>
+<li class=""><code>patronus</code></li>
+<li class=""><code>alive</code></li>
+<li class=""><code>image</code></li>
+</ul>
+</li>
+</ul>
+<p><strong>3. Fetch Characters by House</strong></p>
+<ul>
+<li class="">
+<p><strong>External API Endpoint:</strong></p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">GET https://hp-api.onrender.com/api/characters/house/{house}</span><br></span></code></pre></div></div>
+</li>
+<li class="">
+<p><strong>Example:</strong></p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">GET https://hp-api.onrender.com/api/characters/house/gryffindor</span><br></span></code></pre></div></div>
+</li>
+<li class="">
+<p><strong>Data to Extract from Response:</strong></p>
+<ul>
+<li class=""><code>name</code></li>
+<li class=""><code>actor</code></li>
+<li class=""><code>patronus</code></li>
+<li class=""><code>alive</code></li>
+<li class=""><code>image</code></li>
+</ul>
+</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="tasks">Tasks<a href="#tasks" class="hash-link" aria-label="Direct link to Tasks" title="Direct link to Tasks" translate="no">​</a></h4>
 <ol>
-<li class="">Integrate with a third-party API</li>
+<li class="">Integrate with the Harry Potter API endpoints listed above</li>
 <li class="">Handle errors gracefully</li>
 <li class="">Add retry logic</li>
 <li class="">Cache external API responses</li>
