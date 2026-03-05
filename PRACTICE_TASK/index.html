@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-PRACTICE_TASK" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.9.2">
+<title data-rh="true">Practice Task - Real-Time Food Delivery System API | drf training</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://pragnakalp.github.io/drf-training/PRACTICE_TASK"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Practice Task - Real-Time Food Delivery System API | drf training"><meta data-rh="true" name="description" content="Comprehensive practice task building a complete food delivery system API with Django REST Framework"><meta data-rh="true" property="og:description" content="Comprehensive practice task building a complete food delivery system API with Django REST Framework"><link data-rh="true" rel="icon" href="/drf-training/img/pk-color-128.png"><link data-rh="true" rel="canonical" href="https://pragnakalp.github.io/drf-training/PRACTICE_TASK"><link data-rh="true" rel="alternate" href="https://pragnakalp.github.io/drf-training/PRACTICE_TASK" hreflang="en"><link data-rh="true" rel="alternate" href="https://pragnakalp.github.io/drf-training/PRACTICE_TASK" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Practice Task - Real-Time Food Delivery System API","item":"https://pragnakalp.github.io/drf-training/PRACTICE_TASK"}]}</script><link rel="stylesheet" href="/drf-training/assets/css/styles.dd77c8c2.css">
+<script src="/drf-training/assets/js/runtime~main.8da2d2da.js" defer="defer"></script>
+<script src="/drf-training/assets/js/main.8231b364.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/drf-training/img/pk-color-128.png"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><a class="navbar__brand" href="/drf-training/"><div class="navbar__logo"><img src="/drf-training/img/pk-color-128.png" alt="drf training Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/drf-training/img/pk-color-128.png" alt="drf training Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">DRF training</b></a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/drf-training/"><span title="Django REST Framework Learning Guide" class="linkLabel_WmDU">Django REST Framework Learning Guide</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/drf-training/LEVEL_0_BEGINNER"><span title="Level 0: Complete Beginner - Python &amp; Web Fundamentals" class="linkLabel_WmDU">Level 0: Complete Beginner - Python &amp; Web Fundamentals</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/drf-training/LEVEL_1_FOUNDATIONS"><span title="Level 1: Foundations - Django + REST Basics" class="linkLabel_WmDU">Level 1: Foundations - Django + REST Basics</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/drf-training/LEVEL_2A_INTERMEDIATE"><span title="Level 2A: Intermediate - Authentication, Permissions &amp; Throttling" class="linkLabel_WmDU">Level 2A: Intermediate - Authentication, Permissions &amp; Throttling</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/drf-training/LEVEL_2B_INTERMEDIATE"><span title="Level 2B: Intermediate - Filtering, Searching &amp; Advanced Features" class="linkLabel_WmDU">Level 2B: Intermediate - Filtering, Searching &amp; Advanced Features</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/drf-training/LEVEL_3A_ADVANCED"><span title="Level 3A: Advanced - Relationships &amp; Query Optimization" class="linkLabel_WmDU">Level 3A: Advanced - Relationships &amp; Query Optimization</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/drf-training/LEVEL_3B_ADVANCED"><span title="Level 3B: Advanced - Serializers &amp; Advanced Patterns" class="linkLabel_WmDU">Level 3B: Advanced - Serializers &amp; Advanced Patterns</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/drf-training/LEVEL_4_SCALABLE"><span title="Level 4: Scalable API Design - Caching, Versioning &amp; Advanced Features" class="linkLabel_WmDU">Level 4: Scalable API Design - Caching, Versioning &amp; Advanced Features</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/drf-training/LEVEL_5_EXPERT"><span title="Level 5: Expert - Production, Performance &amp; Advanced Patterns" class="linkLabel_WmDU">Level 5: Expert - Production, Performance &amp; Advanced Patterns</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" href="/drf-training/PRACTICE_TASK"><span title="Practice Task - Real-Time Food Delivery System API" class="linkLabel_WmDU">Practice Task - Real-Time Food Delivery System API</span></a></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/drf-training/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Practice Task - Real-Time Food Delivery System API</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Practice Task: Real-Time Food Delivery System API</h1></header>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="overview">Overview<a href="#overview" class="hash-link" aria-label="Direct link to Overview" title="Direct link to Overview" translate="no">​</a></h2>
+<p>Build a <strong>Real-Time Food Delivery System</strong> API where customers can browse restaurants, place orders, track deliveries in real-time, and receive live updates through WebSockets. This project integrates all DRF concepts from Level 0 to Level 5.</p>
+<p><strong>Focus:</strong> Complete REST API with Authentication, Relationships, Query Optimization, Caching, File Uploads, Third-Party Integration, and Real-Time WebSocket Updates</p>
+<p><strong>Important:</strong> Follow the best practices mentioned in <a href="https://pragnakalp.github.io/django-rest-best-practices" target="_blank" rel="noopener noreferrer" class="">Django REST Best Practices</a> for all implementations throughout this project.</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-youll-build">What You&#x27;ll Build<a href="#what-youll-build" class="hash-link" aria-label="Direct link to What You&#x27;ll Build" title="Direct link to What You&#x27;ll Build" translate="no">​</a></h2>
+<p>A food delivery management API with the following endpoints and features:</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="1-user-authentication-system-apiauth">1. User Authentication System (<code>/api/auth/</code>)<a href="#1-user-authentication-system-apiauth" class="hash-link" aria-label="Direct link to 1-user-authentication-system-apiauth" title="Direct link to 1-user-authentication-system-apiauth" translate="no">​</a></h3>
+<ul>
+<li class="">User registration with custom user model (username, email, phone)</li>
+<li class="">Multiple user roles: Customer, Restaurant Owner, Delivery Driver</li>
+<li class="">JWT token-based authentication (login, refresh)</li>
+<li class="">User profile management with avatar upload</li>
+<li class="">Role-specific profile data (customer addresses, driver vehicle info, restaurant details)</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="2-restaurants-management-apirestaurants">2. Restaurants Management (<code>/api/restaurants/</code>)<a href="#2-restaurants-management-apirestaurants" class="hash-link" aria-label="Direct link to 2-restaurants-management-apirestaurants" title="Direct link to 2-restaurants-management-apirestaurants" translate="no">​</a></h3>
+<ul>
+<li class="">List all restaurants (paginated, 20 per page)</li>
+<li class="">Create/Update/Delete restaurants (restaurant owners only)</li>
+<li class="">Restaurant details: name, cuisine type, address, opening hours, delivery fee, minimum order</li>
+<li class="">Upload restaurant banner and logo images</li>
+<li class="">Search restaurants by name or cuisine</li>
+<li class="">Filter by cuisine type, rating, delivery fee, is_open status</li>
+<li class="">View restaurant menu items and reviews</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="3-menu-items-apimenu-items">3. Menu Items (<code>/api/menu-items/</code>)<a href="#3-menu-items-apimenu-items" class="hash-link" aria-label="Direct link to 3-menu-items-apimenu-items" title="Direct link to 3-menu-items-apimenu-items" translate="no">​</a></h3>
+<ul>
+<li class="">List menu items by restaurant (paginated)</li>
+<li class="">Create/Update/Delete menu items (restaurant owner only)</li>
+<li class="">Item details: name, description, price, category, dietary info, availability</li>
+<li class="">Upload food images</li>
+<li class="">Search items by name or description</li>
+<li class="">Filter by category (Appetizer, Main Course, Dessert, Beverage), dietary preferences (Vegetarian, Vegan, Gluten-Free)</li>
+<li class="">Mark items as available/unavailable</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="4-orders-apiorders">4. Orders (<code>/api/orders/</code>)<a href="#4-orders-apiorders" class="hash-link" aria-label="Direct link to 4-orders-apiorders" title="Direct link to 4-orders-apiorders" translate="no">​</a></h3>
+<ul>
+<li class="">List orders (customers see their orders, drivers see assigned orders, owners see restaurant orders)</li>
+<li class="">Create orders with multiple items (customers only)</li>
+<li class="">Order details with nested items, restaurant, customer, delivery driver</li>
+<li class="">Order status workflow: Pending → Confirmed → Preparing → Ready → Picked Up → Delivered → Cancelled</li>
+<li class="">Calculate order totals</li>
+<li class="">Assign delivery driver to order</li>
+<li class="">Rate and review completed orders</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="5-order-management-apiordersmanagement">5. Order Management (<code>/api/orders/management/</code>)<a href="#5-order-management-apiordersmanagement" class="hash-link" aria-label="Direct link to 5-order-management-apiordersmanagement" title="Direct link to 5-order-management-apiordersmanagement" translate="no">​</a></h3>
+<ul>
+<li class="">List active orders (drivers see assigned, customers see their orders)</li>
+<li class="">Update order status in real-time (drivers and restaurant owners only)</li>
+<li class="">Delivery status updates</li>
+<li class="">Estimated delivery time calculation</li>
+<li class="">Order history and statistics</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="6-reviews--ratings-apireviews">6. Reviews &amp; Ratings (<code>/api/reviews/</code>)<a href="#6-reviews--ratings-apireviews" class="hash-link" aria-label="Direct link to 6-reviews--ratings-apireviews" title="Direct link to 6-reviews--ratings-apireviews" translate="no">​</a></h3>
+<ul>
+<li class="">List reviews for restaurants and menu items</li>
+<li class="">Create reviews (customers only, after order completion)</li>
+<li class="">Rating (1-5 stars) with optional comment</li>
+<li class="">Filter reviews by rating</li>
+<li class="">Calculate average ratings for restaurants and items</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="7-real-time-websocket-endpoints">7. Real-Time WebSocket Endpoints<a href="#7-real-time-websocket-endpoints" class="hash-link" aria-label="Direct link to 7. Real-Time WebSocket Endpoints" title="Direct link to 7. Real-Time WebSocket Endpoints" translate="no">​</a></h3>
+<ul>
+<li class="">
+<p><strong>Order Updates</strong> (<code>ws/orders/{id}/</code>)</p>
+<ul>
+<li class="">Order status changed (Confirmed, Preparing, Ready, etc.)</li>
+<li class="">Driver assigned</li>
+<li class="">Estimated delivery time updated</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Order Management</strong> (<code>ws/orders/management/{id}/</code>)</p>
+<ul>
+<li class="">Order status updates</li>
+<li class="">Order completed</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Restaurant Dashboard</strong> (<code>ws/restaurants/{id}/</code>)</p>
+<ul>
+<li class="">New order received</li>
+<li class="">Order status updates</li>
+<li class="">Real-time order queue</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="technical-requirements">Technical Requirements<a href="#technical-requirements" class="hash-link" aria-label="Direct link to Technical Requirements" title="Direct link to Technical Requirements" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="models-to-create">Models to Create<a href="#models-to-create" class="hash-link" aria-label="Direct link to Models to Create" title="Direct link to Models to Create" translate="no">​</a></h3>
+<p><strong>Figure out the field types yourself based on the requirements:</strong></p>
+<ol>
+<li class="">
+<p><strong>CustomUser</strong> (extends AbstractUser)</p>
+<ul>
+<li class="">username (unique)</li>
+<li class="">email (unique)</li>
+<li class="">phone_number (unique)</li>
+<li class="">first_name</li>
+<li class="">last_name</li>
+<li class="">user_type (choices: Customer, Restaurant Owner, Delivery Driver)</li>
+<li class="">is_active (boolean)</li>
+<li class="">created_at</li>
+<li class="">updated_at</li>
+</ul>
+</li>
+<li class="">
+<p><strong>CustomerProfile</strong> (OneToOne with User)</p>
+<ul>
+<li class="">user (ForeignKey to User)</li>
+<li class="">avatar (image upload, max 5MB)</li>
+<li class="">default_address (TextField)</li>
+<li class="">saved_addresses (JSONField or separate Address model)</li>
+<li class="">total_orders</li>
+<li class="">loyalty_points (default 0)</li>
+<li class="">created_at</li>
+<li class="">updated_at</li>
+</ul>
+</li>
+<li class="">
+<p><strong>DriverProfile</strong> (OneToOne with User)</p>
+<ul>
+<li class="">user (ForeignKey to User)</li>
+<li class="">avatar (image upload, max 5MB)</li>
+<li class="">vehicle_type (choices: Bike, Scooter, Car)</li>
+<li class="">vehicle_number</li>
+<li class="">license_number</li>
+<li class="">is_available (boolean, default True)</li>
+<li class="">total_deliveries</li>
+<li class="">average_rating (decimal, default 0)</li>
+<li class="">created_at</li>
+<li class="">updated_at</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Restaurant</strong></p>
+<ul>
+<li class="">owner (ForeignKey to User)</li>
+<li class="">name</li>
+<li class="">description</li>
+<li class="">cuisine_type (choices: Italian, Chinese, Indian, Mexican, American, Japanese, Thai, Mediterranean)</li>
+<li class="">address</li>
+<li class="">phone_number</li>
+<li class="">email</li>
+<li class="">logo (image upload, max 5MB)</li>
+<li class="">banner (image upload, max 10MB)</li>
+<li class="">opening_time</li>
+<li class="">closing_time</li>
+<li class="">is_open (boolean)</li>
+<li class="">delivery_fee (decimal)</li>
+<li class="">minimum_order (decimal, default 0)</li>
+<li class="">average_rating (decimal, default 0)</li>
+<li class="">total_reviews</li>
+<li class="">created_at</li>
+<li class="">updated_at</li>
+</ul>
+</li>
+<li class="">
+<p><strong>MenuItem</strong></p>
+<ul>
+<li class="">restaurant (ForeignKey to Restaurant)</li>
+<li class="">name</li>
+<li class="">description</li>
+<li class="">price (decimal)</li>
+<li class="">category (choices: Appetizer, Main Course, Dessert, Beverage, Side Dish)</li>
+<li class="">dietary_info (choices: Vegetarian, Vegan, Gluten-Free, Dairy-Free, None)</li>
+<li class="">image (image upload, max 5MB)</li>
+<li class="">is_available (boolean, default True)</li>
+<li class="">preparation_time (integer, minutes)</li>
+<li class="">created_at</li>
+<li class="">updated_at</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Order</strong></p>
+<ul>
+<li class="">customer (ForeignKey to User)</li>
+<li class="">restaurant (ForeignKey to Restaurant)</li>
+<li class="">driver (ForeignKey to User, nullable)</li>
+<li class="">order_number (unique, auto-generated)</li>
+<li class="">status (choices: Pending, Confirmed, Preparing, Ready, Picked Up, Delivered, Cancelled)</li>
+<li class="">delivery_address</li>
+<li class="">subtotal (decimal)</li>
+<li class="">delivery_fee (decimal)</li>
+<li class="">tax (decimal)</li>
+<li class="">total_amount (decimal)</li>
+<li class="">special_instructions (TextField, nullable)</li>
+<li class="">estimated_delivery_time (DateTimeField, nullable)</li>
+<li class="">actual_delivery_time (DateTimeField, nullable)</li>
+<li class="">created_at</li>
+<li class="">updated_at</li>
+</ul>
+</li>
+<li class="">
+<p><strong>OrderItem</strong> (ManyToMany through model)</p>
+<ul>
+<li class="">order (ForeignKey to Order)</li>
+<li class="">menu_item (ForeignKey to MenuItem)</li>
+<li class="">quantity</li>
+<li class="">price (decimal, snapshot of item price at order time)</li>
+<li class="">special_instructions (TextField, nullable)</li>
+<li class="">created_at</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Review</strong></p>
+<ul>
+<li class="">customer (ForeignKey to User)</li>
+<li class="">restaurant (ForeignKey to Restaurant, nullable)</li>
+<li class="">menu_item (ForeignKey to MenuItem, nullable)</li>
+<li class="">order (ForeignKey to Order)</li>
+<li class="">rating (integer, 1-5)</li>
+<li class="">comment (TextField, nullable)</li>
+<li class="">created_at</li>
+<li class="">updated_at</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-you-need-to-figure-out">What You Need to Figure Out<a href="#what-you-need-to-figure-out" class="hash-link" aria-label="Direct link to What You Need to Figure Out" title="Direct link to What You Need to Figure Out" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="1-model-implementation">1. <strong>Model Implementation</strong><a href="#1-model-implementation" class="hash-link" aria-label="Direct link to 1-model-implementation" title="Direct link to 1-model-implementation" translate="no">​</a></h3>
+<ul>
+<li class="">Define all models with appropriate field types (CharField, IntegerField, DecimalField, etc.)</li>
+<li class="">Set up ForeignKey relationships with correct on_delete behavior</li>
+<li class="">Create ManyToMany relationship through OrderItem model</li>
+<li class="">Add database indexes for frequently queried fields (status, created_at, restaurant, customer)</li>
+<li class="">Implement model methods:<!-- -->
+<ul>
+<li class="">Order: <code>calculate_total()</code>, <code>can_cancel()</code>, <code>is_delivered()</code></li>
+<li class="">Restaurant: <code>is_currently_open()</code>, <code>update_average_rating()</code></li>
+<li class="">DriverProfile: <code>update_availability()</code>, <code>get_delivery_stats()</code></li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="2-serializers">2. <strong>Serializers</strong><a href="#2-serializers" class="hash-link" aria-label="Direct link to 2-serializers" title="Direct link to 2-serializers" translate="no">​</a></h3>
+<ul>
+<li class="">Create ModelSerializers for all models</li>
+<li class="">Implement nested serializers:<!-- -->
+<ul>
+<li class="">OrderDetailSerializer with nested items, restaurant, customer, driver</li>
+<li class="">RestaurantDetailSerializer with nested menu items and reviews</li>
+<li class="">MenuItemSerializer with restaurant info</li>
+</ul>
+</li>
+<li class="">Add SerializerMethodField for computed fields:<!-- -->
+<ul>
+<li class=""><code>is_open_now</code>, <code>estimated_delivery_time</code> (Restaurant)</li>
+<li class=""><code>average_rating</code>, <code>total_reviews</code> (Restaurant, MenuItem)</li>
+<li class=""><code>can_review</code>, <code>can_cancel</code> (Order)</li>
+<li class=""><code>items_count</code>, <code>final_total</code> (Order)</li>
+</ul>
+</li>
+<li class="">Implement custom validation:<!-- -->
+<ul>
+<li class="">Order total must meet restaurant minimum_order</li>
+<li class="">Delivery address is required for delivery orders</li>
+<li class="">Menu items must belong to the same restaurant</li>
+<li class="">Rating must be between 1-5</li>
+<li class="">Driver can only accept orders when available</li>
+</ul>
+</li>
+<li class="">Override <code>create()</code> for Order to:<!-- -->
+<ul>
+<li class="">Calculate subtotal, tax, delivery fee</li>
+<li class="">Create OrderItem entries</li>
+<li class="">Send WebSocket notification to restaurant</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="3-authentication--permissions">3. <strong>Authentication &amp; Permissions</strong><a href="#3-authentication--permissions" class="hash-link" aria-label="Direct link to 3-authentication--permissions" title="Direct link to 3-authentication--permissions" translate="no">​</a></h3>
+<ul>
+<li class="">Set up JWT authentication (djangorestframework-simplejwt)</li>
+<li class="">Create custom permissions:<!-- -->
+<ul>
+<li class=""><code>IsOwnerOrReadOnly</code> - owner can edit/delete, others read-only</li>
+<li class=""><code>IsRestaurantOwner</code> - only restaurant owner can edit restaurant and menu items</li>
+<li class=""><code>IsCustomer</code> - only customers can place orders and write reviews</li>
+<li class=""><code>IsDriver</code> - only drivers can update delivery status and location</li>
+<li class=""><code>IsOrderCustomer</code> - only order customer can view order details</li>
+<li class=""><code>IsRestaurantOwnerOrDriver</code> - restaurant owner or assigned driver can update order status</li>
+</ul>
+</li>
+<li class="">Implement user registration endpoint with role selection</li>
+<li class="">Create role-specific profile automatically on user creation (using signals)</li>
+<li class="">Add throttling:<!-- -->
+<ul>
+<li class="">Anonymous: 100/hour</li>
+<li class="">Authenticated: 1000/hour</li>
+<li class="">Order creation: 20/hour</li>
+<li class="">Review creation: 10/hour</li>
+<li class="">Location updates: 500/hour (for drivers)</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="4-viewsets--url-routing">4. <strong>ViewSets &amp; URL Routing</strong><a href="#4-viewsets--url-routing" class="hash-link" aria-label="Direct link to 4-viewsets--url-routing" title="Direct link to 4-viewsets--url-routing" translate="no">​</a></h3>
+<ul>
+<li class="">Create ModelViewSets for all models</li>
+<li class="">Implement custom actions:<!-- -->
+<ul>
+<li class=""><code>@action</code> for placing orders (POST /orders/place/)</li>
+<li class=""><code>@action</code> for cancelling orders (POST /orders/{id}/cancel/)</li>
+<li class=""><code>@action</code> for updating order status (POST /orders/{id}/update-status/)</li>
+<li class=""><code>@action</code> for assigning driver (POST /orders/{id}/assign-driver/)</li>
+<li class=""><code>@action</code> for updating order status (POST /orders/{id}/update-status/)</li>
+<li class=""><code>@action</code> for restaurant menu (GET /restaurants/{id}/menu/)</li>
+<li class=""><code>@action</code> for popular restaurants (GET /restaurants/popular/)</li>
+</ul>
+</li>
+<li class="">Set up URL routing with DefaultRouter</li>
+<li class="">Implement API versioning (v1, v2)</li>
+<li class="">Override <code>get_queryset()</code> to filter based on user role:<!-- -->
+<ul>
+<li class="">Customers see only their orders</li>
+<li class="">Drivers see only assigned orders</li>
+<li class="">Restaurant owners see only their restaurant&#x27;s orders</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="5-filtering-searching-ordering">5. <strong>Filtering, Searching, Ordering</strong><a href="#5-filtering-searching-ordering" class="hash-link" aria-label="Direct link to 5-filtering-searching-ordering" title="Direct link to 5-filtering-searching-ordering" translate="no">​</a></h3>
+<ul>
+<li class="">Install and configure django-filter</li>
+<li class="">Implement filters:<!-- -->
+<ul>
+<li class=""><strong>Restaurants:</strong> cuisine_type, is_open, delivery_fee__lte, minimum_order__lte, average_rating__gte</li>
+<li class=""><strong>Menu Items:</strong> restaurant, category, dietary_info, is_available, price__lte</li>
+<li class=""><strong>Orders:</strong> status, restaurant, created_at__gte</li>
+<li class=""><strong>Reviews:</strong> rating, restaurant, menu_item</li>
+</ul>
+</li>
+<li class="">Add search functionality:<!-- -->
+<ul>
+<li class=""><strong>Restaurants:</strong> name, cuisine_type, description</li>
+<li class=""><strong>Menu Items:</strong> name, description</li>
+<li class=""><strong>Orders:</strong> order_number</li>
+</ul>
+</li>
+<li class="">Configure ordering:<!-- -->
+<ul>
+<li class=""><strong>Restaurants:</strong> average_rating (descending), delivery_fee, created_at</li>
+<li class=""><strong>Menu Items:</strong> price, name, created_at</li>
+<li class=""><strong>Orders:</strong> created_at (descending), total_amount</li>
+<li class=""><strong>Reviews:</strong> created_at (descending), rating</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="6-pagination">6. <strong>Pagination</strong><a href="#6-pagination" class="hash-link" aria-label="Direct link to 6-pagination" title="Direct link to 6-pagination" translate="no">​</a></h3>
+<ul>
+<li class="">Restaurants: PageNumberPagination (20 per page)</li>
+<li class="">Menu Items: PageNumberPagination (30 per page)</li>
+<li class="">Orders: CursorPagination (25 per page, ordered by created_at)</li>
+<li class="">Reviews: LimitOffsetPagination (default 20, max 50)</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="7-query-optimization">7. <strong>Query Optimization</strong><a href="#7-query-optimization" class="hash-link" aria-label="Direct link to 7-query-optimization" title="Direct link to 7-query-optimization" translate="no">​</a></h3>
+<ul>
+<li class="">Use <code>select_related()</code> for ForeignKey relationships:<!-- -->
+<ul>
+<li class="">Order: customer, restaurant, driver</li>
+<li class="">MenuItem: restaurant</li>
+<li class="">Review: customer, restaurant, menu_item, order</li>
+<li class="">Restaurant: owner</li>
+</ul>
+</li>
+<li class="">Use <code>prefetch_related()</code> for ManyToMany and reverse ForeignKey:<!-- -->
+<ul>
+<li class="">Order: items (OrderItem), items__menu_item</li>
+<li class="">Restaurant: menu_items, reviews</li>
+<li class="">MenuItem: reviews</li>
+</ul>
+</li>
+<li class="">Add <code>annotate()</code> for computed fields:<!-- -->
+<ul>
+<li class="">Restaurant: items_count, reviews_count, avg_rating</li>
+<li class="">Order: items_count, total_items_quantity</li>
+<li class="">MenuItem: reviews_count, avg_rating</li>
+</ul>
+</li>
+<li class="">Prevent N+1 queries in all list endpoints</li>
+<li class="">Use <code>only()</code> and <code>defer()</code> to limit fields when appropriate</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="8-django-signals">8. <strong>Django Signals</strong><a href="#8-django-signals" class="hash-link" aria-label="Direct link to 8-django-signals" title="Direct link to 8-django-signals" translate="no">​</a></h3>
+<ul>
+<li class="">Create signals in <code>api/signals.py</code>:<!-- -->
+<ul>
+<li class=""><strong>post_save(CustomUser, created=True):</strong> Create role-specific profile (CustomerProfile, DriverProfile)</li>
+<li class=""><strong>post_save(Order, created=True):</strong> Send WebSocket notification to restaurant</li>
+<li class=""><strong>post_save(Order):</strong> When status changes to &#x27;Delivered&#x27;, update customer and driver statistics</li>
+<li class=""><strong>post_save(Review, created=True):</strong> Update restaurant/menu item average rating</li>
+<li class=""><strong>post_save(OrderItem):</strong> Update order subtotal when items are added</li>
+<li class=""><strong>pre_save(Order):</strong> Calculate total_amount before saving</li>
+</ul>
+</li>
+<li class="">Register signals in <code>api/apps.py</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="9-caching-with-redis">9. <strong>Caching with Redis</strong><a href="#9-caching-with-redis" class="hash-link" aria-label="Direct link to 9-caching-with-redis" title="Direct link to 9-caching-with-redis" translate="no">​</a></h3>
+<ul>
+<li class="">Install django-redis</li>
+<li class="">Configure Redis cache backend</li>
+<li class="">Implement caching strategy:<!-- -->
+<ul>
+<li class="">Restaurant list: 5 minutes</li>
+<li class="">Restaurant detail: 10 minutes</li>
+<li class="">Menu items by restaurant: 15 minutes</li>
+<li class="">Popular restaurants: 30 minutes</li>
+</ul>
+</li>
+<li class="">Invalidate cache on create/update/delete operations:<!-- -->
+<ul>
+<li class="">Clear restaurant cache when menu items change</li>
+<li class="">Clear menu cache when availability changes</li>
+<li class="">Clear restaurant cache when reviews are added</li>
+</ul>
+</li>
+<li class="">Use low-level cache API for:<!-- -->
+<ul>
+<li class="">Popular restaurants calculation</li>
+<li class="">Driver availability status</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="10-file-uploads">10. <strong>File Uploads</strong><a href="#10-file-uploads" class="hash-link" aria-label="Direct link to 10-file-uploads" title="Direct link to 10-file-uploads" translate="no">​</a></h3>
+<ul>
+<li class="">Configure MEDIA_URL and MEDIA_ROOT</li>
+<li class="">Implement file upload validation:<!-- -->
+<ul>
+<li class="">User avatar: max 5MB, formats: jpg, jpeg, png</li>
+<li class="">Restaurant logo: max 5MB, formats: jpg, jpeg, png</li>
+<li class="">Restaurant banner: max 10MB, formats: jpg, jpeg, png</li>
+<li class="">Menu item image: max 5MB, formats: jpg, jpeg, png</li>
+</ul>
+</li>
+<li class="">Add file size and format validation in serializers</li>
+<li class="">Implement image compression using Pillow</li>
+<li class="">Set up static file serving for development</li>
+<li class="">Use unique filenames to prevent overwrites</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="11-websocket-implementation-django-channels">11. <strong>WebSocket Implementation (Django Channels)</strong><a href="#11-websocket-implementation-django-channels" class="hash-link" aria-label="Direct link to 11-websocket-implementation-django-channels" title="Direct link to 11-websocket-implementation-django-channels" translate="no">​</a></h3>
+<ul>
+<li class="">Install channels and channels-redis</li>
+<li class="">Configure ASGI application and channel layers</li>
+<li class="">Create WebSocket consumers:<!-- -->
+<ul>
+<li class=""><strong>OrderConsumer:</strong> Real-time order status updates</li>
+<li class=""><strong>OrderManagementConsumer:</strong> Real-time order status updates</li>
+<li class=""><strong>RestaurantDashboardConsumer:</strong> Real-time new orders for restaurant</li>
+</ul>
+</li>
+<li class="">Set up WebSocket routing</li>
+<li class="">Send WebSocket messages from views when:<!-- -->
+<ul>
+<li class="">New order is placed (notify restaurant)</li>
+<li class="">Order status changes (notify customer, restaurant, driver)</li>
+<li class="">Driver is assigned (notify customer and driver)</li>
+<li class="">Order is delivered (notify all parties)</li>
+</ul>
+</li>
+<li class="">Handle WebSocket authentication using JWT</li>
+<li class="">Implement room-based messaging:<!-- -->
+<ul>
+<li class="">Order room: <code>order_{order_id}</code></li>
+<li class="">Restaurant room: <code>restaurant_{restaurant_id}</code></li>
+<li class="">Customer room: <code>customer_{user_id}</code></li>
+<li class="">Driver room: <code>driver_{user_id}</code></li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="12-api-documentation">12. <strong>API Documentation</strong><a href="#12-api-documentation" class="hash-link" aria-label="Direct link to 12-api-documentation" title="Direct link to 12-api-documentation" translate="no">​</a></h3>
+<ul>
+<li class="">Install drf-spectacular</li>
+<li class="">Configure OpenAPI 3.0 schema generation</li>
+<li class="">Add Swagger UI at <code>/api/docs/</code></li>
+<li class="">Add ReDoc at <code>/api/redoc/</code></li>
+<li class="">Customize schema with:<!-- -->
+<ul>
+<li class="">Detailed endpoint descriptions</li>
+<li class="">Request/response examples</li>
+<li class="">Authentication requirements</li>
+<li class="">Role-based access documentation</li>
+<li class="">WebSocket endpoint documentation</li>
+</ul>
+</li>
+</ul></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_WFHX"><a href="https://github.com/pragnakalp/drf-training/tree/main/docs/PRACTICE_TASK.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/drf-training/LEVEL_5_EXPERT"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Level 5: Expert - Production, Performance &amp; Advanced Patterns</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#overview" class="table-of-contents__link toc-highlight">Overview</a></li><li><a href="#what-youll-build" class="table-of-contents__link toc-highlight">What You&#39;ll Build</a><ul><li><a href="#1-user-authentication-system-apiauth" class="table-of-contents__link toc-highlight">1. User Authentication System (<code>/api/auth/</code>)</a></li><li><a href="#2-restaurants-management-apirestaurants" class="table-of-contents__link toc-highlight">2. Restaurants Management (<code>/api/restaurants/</code>)</a></li><li><a href="#3-menu-items-apimenu-items" class="table-of-contents__link toc-highlight">3. Menu Items (<code>/api/menu-items/</code>)</a></li><li><a href="#4-orders-apiorders" class="table-of-contents__link toc-highlight">4. Orders (<code>/api/orders/</code>)</a></li><li><a href="#5-order-management-apiordersmanagement" class="table-of-contents__link toc-highlight">5. Order Management (<code>/api/orders/management/</code>)</a></li><li><a href="#6-reviews--ratings-apireviews" class="table-of-contents__link toc-highlight">6. Reviews &amp; Ratings (<code>/api/reviews/</code>)</a></li><li><a href="#7-real-time-websocket-endpoints" class="table-of-contents__link toc-highlight">7. Real-Time WebSocket Endpoints</a></li></ul></li><li><a href="#technical-requirements" class="table-of-contents__link toc-highlight">Technical Requirements</a><ul><li><a href="#models-to-create" class="table-of-contents__link toc-highlight">Models to Create</a></li></ul></li><li><a href="#what-you-need-to-figure-out" class="table-of-contents__link toc-highlight">What You Need to Figure Out</a><ul><li><a href="#1-model-implementation" class="table-of-contents__link toc-highlight">1. <strong>Model Implementation</strong></a></li><li><a href="#2-serializers" class="table-of-contents__link toc-highlight">2. <strong>Serializers</strong></a></li><li><a href="#3-authentication--permissions" class="table-of-contents__link toc-highlight">3. <strong>Authentication &amp; Permissions</strong></a></li><li><a href="#4-viewsets--url-routing" class="table-of-contents__link toc-highlight">4. <strong>ViewSets &amp; URL Routing</strong></a></li><li><a href="#5-filtering-searching-ordering" class="table-of-contents__link toc-highlight">5. <strong>Filtering, Searching, Ordering</strong></a></li><li><a href="#6-pagination" class="table-of-contents__link toc-highlight">6. <strong>Pagination</strong></a></li><li><a href="#7-query-optimization" class="table-of-contents__link toc-highlight">7. <strong>Query Optimization</strong></a></li><li><a href="#8-django-signals" class="table-of-contents__link toc-highlight">8. <strong>Django Signals</strong></a></li><li><a href="#9-caching-with-redis" class="table-of-contents__link toc-highlight">9. <strong>Caching with Redis</strong></a></li><li><a href="#10-file-uploads" class="table-of-contents__link toc-highlight">10. <strong>File Uploads</strong></a></li><li><a href="#11-websocket-implementation-django-channels" class="table-of-contents__link toc-highlight">11. <strong>WebSocket Implementation (Django Channels)</strong></a></li><li><a href="#12-api-documentation" class="table-of-contents__link toc-highlight">12. <strong>API Documentation</strong></a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">
+            <style>
+              .footer-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 2rem;
+                font-size: 1.1rem;
+                gap: 1rem;
+                line-height: 1.6;
+              }
+              
+              @media (max-width: 768px) {
+                .footer-container {
+                  flex-direction: column;
+                  text-align: center;
+                  justify-content: center;
+                  font-size: 1rem;
+                }
+              }
+            </style>
+            
+            <div class="footer-container">
+              
+              <div>
+                Copyright © 2026
+                <a href="https://pragnakalp.com" target="_blank" rel="noopener noreferrer" style="color: #0ea5e9; text-decoration: none; font-weight: 500; margin-left: 0.25rem;">
+                  Pragnakalp Techlabs
+                </a>. All rights reserved.
+              </div>
+
+              <div>
+                <strong>Contributors:</strong> Rahul, Nikunj, Neel, Meet, Dhvanil, Mansi, Darshit
+              </div>
+
+            </div>
+          </div></div></div></footer></div>
+</body>
+</html>
