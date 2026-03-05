@@ -6,7 +6,7 @@ This comprehensive guide will take you from a complete beginner to an expert in 
 
 ## 📚 Learning Path Overview
 
-This guide is divided into **6 levels**, each building upon the previous one:
+This guide is divided into **6 levels + 1 comprehensive practice task**, each building upon the previous one:
 
 - **Level 0: Complete Beginner** - Python basics, web concepts, and environment setup
 - **Level 1: Foundations** - Django basics, REST fundamentals, and your first API
@@ -14,6 +14,7 @@ This guide is divided into **6 levels**, each building upon the previous one:
 - **Level 3: Advanced** - Relationships, nested serializers, and query optimization
 - **Level 4: Scalable** - Caching, versioning, file uploads, and async views
 - **Level 5: Expert** - Production deployment, GraphQL, WebSockets, and CI/CD
+- **Practice Task: Real-Time Food Delivery System** - Complete project integrating all concepts
 
 ## ⏱️ Time Estimates
 
@@ -25,8 +26,9 @@ This guide is divided into **6 levels**, each building upon the previous one:
 | Level 3 | 12-18 hours | ⭐⭐⭐ Advanced |
 | Level 4 | 15-20 hours | ⭐⭐⭐ Advanced |
 | Level 5 | 20-30 hours | ⭐⭐⭐ Expert |
+| Practice Task | 40-60 hours | ⭐⭐⭐⭐ Expert |
 
-**Total Estimated Time: 67-99 hours** (approximately 2-3 months of part-time study)
+**Total Estimated Time: 107-159 hours** (approximately 3-4 months of part-time study)
 
 ## 📋 Prerequisites
 
@@ -72,6 +74,7 @@ Before starting **Level 0**, you should have:
 3. **Do the exercises** - Practice is essential for learning
 4. **Try the trivia** - Test your understanding
 5. **Build projects** - Apply what you learn in real projects
+6. **Complete the Practice Task** - Build a complete food delivery system to solidify all concepts
 
 ### Learning Tips
 
@@ -128,6 +131,12 @@ Each level follows this structure:
 1. Review **[LEVEL_1_FOUNDATIONS.md](LEVEL_1_FOUNDATIONS.md)** - Focus on DRF-specific parts
 2. Start with **[LEVEL_2A_INTERMEDIATE.md](LEVEL_2A_INTERMEDIATE.md)** for authentication
 3. Use other levels as reference
+
+### For Those Ready for a Challenge
+
+1. Complete all levels 0-5 first
+2. Take on the **[PRACTICE_TASK.md](PRACTICE_TASK.md)** - Build a complete food delivery system
+3. Apply all concepts in a real-world project
 
 ## 🐛 Troubleshooting
 
@@ -202,6 +211,12 @@ Each level follows this structure:
 - Corey Schafer's Django Tutorial Series
 - Real Python Django REST Framework Course
 
+### Practice Projects
+
+- **[PRACTICE_TASK.md](PRACTICE_TASK.md)** - Complete Real-Time Food Delivery System API
+  - Integrates all DRF concepts from Levels 0-5
+  - Real-world project with authentication, WebSockets, caching, and more
+
 ## ✅ Progress Checklist
 
 Track your progress through each level:
@@ -242,11 +257,18 @@ Track your progress through each level:
   - [ ] Monitoring set up
   - [ ] All exercises completed
 
+- [ ] **Practice Task**: Real-Time Food Delivery System
+  - [ ] Complete API built with all DRF concepts
+  - [ ] Authentication and permissions implemented
+  - [ ] Real-time WebSocket updates working
+  - [ ] Production-ready features added
+  - [ ] All requirements completed
+
 ## 🎓 Next Steps After Completion
 
-Once you've completed all levels:
+Once you've completed all levels and the practice task:
 
-1. **Build a real project** - Apply your knowledge
+1. **Build your own project** - Apply your knowledge to something unique
 2. **Contribute to open source** - Django/DRF projects need help
 3. **Read the source code** - Understand how DRF works internally
 4. **Teach others** - Teaching reinforces learning

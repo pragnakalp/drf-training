@@ -13,7 +13,8 @@ const sidebars = {
     'LEVEL_3A_ADVANCED',
     'LEVEL_3B_ADVANCED',
     'LEVEL_4_SCALABLE',
-    'LEVEL_5_EXPERT',  ],
+    'LEVEL_5_EXPERT', 
+    'PRACTICE_TASK' ],
 };
 
 export default sidebars;
